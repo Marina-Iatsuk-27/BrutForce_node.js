@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ввод пароля</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .window {
+            width: 300px;
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        .title-bar {
+            background-color: #0078D7;
+            color: white;
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .title-bar img {
+            width: 16px;
+            height: 16px;
+        }
+
+        .title-bar .title {
+            flex: 1;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .content {
+            padding: 20px;
+            background-color: rgb(174, 202, 227);
+        }
+
+        .content label {
+            font-size: 14px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .content input {
+            width: 100%;
+            padding: 5px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin-bottom: 10px;
+        }
+
+        .content .buttons {
+            text-align: center;
+        }
+
+        .content .buttons button {
+            width: 80px;
+            padding: 5px;
+            font-size: 14px;
+            background-color: #dcdcdc;
+            border: 1px solid #aaa;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .content .buttons button:hover {
+            background-color: #c0c0c0;
+        }
+
+        .content .message {
+            margin-top: 10px;
+            font-size: 14px;
+            color: green;
+            text-align: center;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="window">
+        <div class="title-bar">
+            <img src="icon.png" alt="icon">
+            <div class="title">Ввод пароля</div>
+            <span>&#10005;</span>
+        </div>
+        <div class="content">
+            <label for="password">Пароль:</label>
+            <input type="password" id="password" placeholder="Введите пароль">
+            <div class="buttons">
+                <button onclick="checkPassword()">Ok</button>
+            </div>
+            <div class="message" id="message">Пароль верный</div>
+        </div>
+    </div>
+
+    <script>
+        function checkPassword() {
+            const password = document.getElementById('password').value;
+            const message = document.getElementById('message');
+
+            if (password === '1234') {
+                message.style.display = 'block';
+            } else {
+                message.style.display = 'none';
+                // alert('Неверный пароль');
+            }
+        }
+
+        // Слушаем нажатие клавиш на документе
+        document.getElementById('password').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                checkPassword(); // Вызываем функцию проверки пароля
+            }
+        });
+    </script>
+</body>
+</html>
